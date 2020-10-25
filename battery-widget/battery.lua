@@ -26,7 +26,7 @@ local function worker(args)
     local args = args or {}
 
     local font = args.font or 'Play 8'
-    local path_to_icons = args.path_to_icons or "/usr/share/icons/Arc/status/symbolic/"
+    local path_to_icons = args.path_to_icons or "/usr/share/icons/Papirus-Dark/symbolic/status/"
     local show_current_level = args.show_current_level or false
     local margin_left = args.margin_left or 0
     local margin_right = args.margin_right or 0
@@ -58,7 +58,7 @@ local function worker(args)
             widget = wibox.widget.imagebox,
             resize = false
         },
-        layout = wibox.container.margin(_, 0, 0, 3)
+        layout = wibox.container.margin(icon_widget, 0, 0, 3)
     }
     local level_widget = wibox.widget {
         font = font,
@@ -149,7 +149,7 @@ local function worker(args)
         charge = charge / capacity
 
         if show_current_level then
-            level_widget.text = string.format('%d%%', charge)
+            level_widget.text = string.format('%.0f%%', charge)
         end
 
         if (charge >= 0 and charge < 15) then
